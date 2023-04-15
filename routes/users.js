@@ -4,6 +4,16 @@ const userController = require('../controllers/user.controller')
 
 router.post('/signup', userController.signup);
 router.post('/signin', userController.signin);
+router.post('/signinWithFaceId', userController.signinWithFaceId);
+router.put('/editProfile', userController.editProfile);
+
+router.get('/:id',async (req,res)=>{
+    id=req.params.id
+    const user = await User.findOne({ _id:id });
+    return res.status(200).send(user);
+
+});
+
 router.post('/forgot-password', userController.forgotPassword);
 router.post('/reset-password/:token', userController.resetPassword);
 router.get('/verify/:token', async (req, res) => {
