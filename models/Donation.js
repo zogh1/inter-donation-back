@@ -26,6 +26,10 @@ const DonationRequestSchema = new mongoose.Schema({
         type: Number,
         required: false
     },
+    currency: {
+        type: String,
+        required: false
+    },
     helpers: [{
         user: {
             type: mongoose.Schema.Types.ObjectId,
@@ -38,10 +42,15 @@ const DonationRequestSchema = new mongoose.Schema({
         },
         ByMatching: {
             type: Boolean,
-            required: true
+            required: false 
         }
     }],
     media: {
+        type: String,
+        required: false
+    },
+    
+    analyse: {
         type: String,
         required: false
     },
