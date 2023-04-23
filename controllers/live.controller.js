@@ -35,7 +35,7 @@ exports.getLives = async (req, res) => {
     
 
       try {
-       const lives = await Live.find({}).populate("user").sort({ createdAt: -1 }).lean();
+       const lives = await Live.find({}).populate("user").populate("participants").sort({ createdAt: -1 }).lean();
   
         
        return res.status(200).json({
@@ -106,4 +106,53 @@ exports.deleteLive = async (req, res) => {
       
       return res.status(500).json({ message: err.message });
     }
+}
+
+
+
+exports.participate = async (req, res) => {
+    
+
+  try {
+      let live =   await Live.findByIdAndUpdate(
+        req.body.liveId,
+        { $push: { participants: req.body.userId } },
+        { new: true, useFindAndModify: false }
+      );
+    
+        
+        return res.status(200).json({ message: `Participate successfully!`,live });
+  } catch (err) {
+    
+    return res.status(500).json({ message: err.message });
+  }
+}
+
+exports.checkParticipation = async (req, res) => {
+    const userId=req.params.userId;
+    const liveId=req.params.liveId;
+    if (liveId === 'favicon.ico' ) {
+      return; // skip query and return early
+    }
+  try {
+      Live.find({ _id: liveId, participants: userId }, (err, result) => {
+          if (err) {
+            console.error(err);
+          } else {
+            if (result.length > 0) {
+              
+              return res.status(200).json({
+                status:true
+              });
+            } else {
+              return res.status(200).json({
+                status:false
+              });
+            }
+          }
+        })
+  } catch (err) {
+    
+    return res.status(500).json({ message: err.message });
+  }
 }
