@@ -51,6 +51,16 @@ const UserSchema = new Schema({
 		type:String,
 		default : null
 	},
+
+
+	identityVerified: {
+		type: Boolean,
+		default: false
+	  },
+	company: {
+		type: String,
+	  },
+
 	solde:[SoldeSchema]
 		
 	
