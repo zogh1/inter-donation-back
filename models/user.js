@@ -48,7 +48,16 @@ const UserSchema = new Schema({
 	company: {
 		type: String,
 	  },
+
+	solde:[SoldeSchema]
+	,
+	company: {
+		type: String,
+	  },
+	
 },
+
+
 { timestamps: true }
 );
 
