@@ -10,6 +10,7 @@ var donationRouter = require('./routes/Donation');
 
 var usersRouter = require('./routes/users');
 var livesRouter = require('./routes/lives.route');
+var postRouter = require('./routes/posts');
 
 
 
@@ -27,6 +28,7 @@ const opinions = {
   debug: true,
 }
 app.use("/peerjs", ExpressPeerServer(server, opinions));
+app.use('/post', postRouter);
 
 
 

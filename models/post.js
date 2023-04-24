@@ -1,0 +1,119 @@
+var mongoose = require('mongoose');
+const user = require('./user');
+var Schema = mongoose.Schema;
+
+const UserSchema = new Schema({
+	
+	email         : {
+		type     : String,
+		required : false
+	},
+	password      : {
+		type     : String,
+		required : false
+	},
+	firstName      : {
+		type     : String,
+		required : false
+	},
+    lastName      : {
+		type     : String,
+		required : false
+	},
+	role          : {
+		type    : String,
+		default : 'user'
+	},
+    imageUrl          : {
+		type    : String,
+		required : false
+	},
+    code          : {
+		type    : String,
+		required : false
+	},
+    verified          : {
+		type    : Boolean,
+		default : false
+	},
+    newPass          : {
+		type    : Boolean,
+		default : false
+	},
+    
+    faceId:{
+		type:String,
+		default : null
+	},
+
+
+	identityVerified: {
+		type: Boolean,
+		default: false
+	  },
+	company: {
+		type: String,
+	  },
+},
+{ timestamps: true }
+);
+
+var post = new Schema({
+
+    user : {
+        type : Schema.Types.ObjectId,
+        ref :'user'
+    },
+    ////
+   
+
+    text : {
+        type : String, 
+        required: true
+    },
+    subject : {
+        type : String, 
+        required: true
+    },
+    PostImage : {
+        type : String, 
+        required: false
+    },
+
+
+
+    likes : {
+        type : [UserSchema],
+        default :[],
+        date : {
+            type: Date,
+            default : Date.now
+        },
+    },
+
+    comments : [
+       {
+            user : {
+                type : UserSchema,
+                ref :'users'
+            },
+
+            text : {
+                type : String, 
+                required: true
+            },
+            
+            date : {
+                type: Date,
+                default : Date.now
+            },
+       }    
+    ],
+    date : {
+        type: Date,
+        default : Date.now
+    }  
+    
+});
+
+module.exports = mongoose.model('post', post);
