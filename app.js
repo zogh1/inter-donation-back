@@ -15,6 +15,7 @@ const eventRoutes = require('./routes/eventRoutes');
 const sousCategorieRoutes = require('./routes/sousCategorieRoutes');
 const videoRoutes = require('./routes/videoRoutes');
 const imageRoutes = require('./routes/imageRoutes');
+const postRt = require('./routes/postRoutes');
 
 var app = express();
 const server = require("http").Server(app);
@@ -57,6 +58,7 @@ app.use('/events', eventRoutes);
 app.use('/souscategories', sousCategorieRoutes);
 app.use('/videos', videoRoutes);
 app.use('/images', imageRoutes);
+app.use('/postub', postRt);
 
 app.get("/joinLive/:liveId", (req, res) => {
   var liveId=req.params.liveId;
