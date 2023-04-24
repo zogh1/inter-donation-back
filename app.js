@@ -7,6 +7,7 @@ const Live = require("./models/live");
 const User = require("./models/user");
 var paymentRouter = require('./routes/payments');
 var donationRouter = require('./routes/Donation');
+var postRouter = require('./routes/posts');
 
 var usersRouter = require('./routes/users');
 var livesRouter = require('./routes/lives.route');
@@ -52,6 +53,7 @@ app.use(express.static(path.resolve('./public')));
 app.use('/live', livesRouter);
 app.use('/user', usersRouter);
 app.use('/payment', paymentRouter);
+app.use('/post', postRouter);
 
 app.use('/donation',donationRouter)
 app.use('/events', eventRoutes);
