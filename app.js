@@ -11,7 +11,10 @@ var donationRouter = require('./routes/Donation');
 var usersRouter = require('./routes/users');
 var livesRouter = require('./routes/lives.route');
 
-
+const eventRoutes = require('./routes/eventRoutes');
+const sousCategorieRoutes = require('./routes/sousCategorieRoutes');
+const videoRoutes = require('./routes/videoRoutes');
+const imageRoutes = require('./routes/imageRoutes');
 
 var app = express();
 const server = require("http").Server(app);
@@ -50,7 +53,10 @@ app.use('/user', usersRouter);
 app.use('/payment', paymentRouter);
 
 app.use('/donation',donationRouter)
-
+app.use('/events', eventRoutes);
+app.use('/souscategories', sousCategorieRoutes);
+app.use('/videos', videoRoutes);
+app.use('/images', imageRoutes);
 
 app.get("/joinLive/:liveId", (req, res) => {
   var liveId=req.params.liveId;
