@@ -29,45 +29,5 @@ router.get('/popular-posts', async (req, res) => {
 
 
 
-router.post('/', async (req, res) =>{
-    const p = new Post({
-        user: req.body.user,
-        text: req.body.text,
-        subject : req.body.subject,
-        likes : req.body.likes,
-    });
-    var post =p.save();
-    res.json(post);
-});
 
-
-router.post('/user', async (req, res) =>{
-    const { lastName, email, password, firstName, imageUrl,role ,faceId} = req.body;
-  console.log(lastName, email, password, firstName, imageUrl,role );
-  try {
-    const user = await User.findOne({ email });
-    if (user) {
-      return res.status(409).json({
-        success: false,
-        message: 'An account with that email already exists',
-      });
-    }
-    await User.create({
-        lastName, email, password, firstName, imageUrl,role ,faceId
-      });
-    res.status(201).json({ success: true, message: 'Événement ajouté avec succès' });
-}catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-
-router.get('/u', async (req, res) => {
-    try {
-      const u = await User.find();
-      res.json(u);
-    } catch (err) {
-      res.status(500).json({ error: err.message });
-    }
-  });
 module.exports = router;
