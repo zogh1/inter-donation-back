@@ -148,14 +148,6 @@ exports.unlikePost=async(req, res)=>{
         const aa = await Post.updateOne({_id: id}, {$pull: {likes: u}}).then(response => {
             console.log(response);
           });
-        // const removeIndex = post.likes
-        //     .map(e=e._id)
-        //     .indexOf(req.body.user)
-        // ;
-        // post.likes.splice(removeIndex,1) 
-
-        // post.likes.pull(likes,removeIndex);
-        // await post.save();
         res.json(post.likes);
 
     } catch (error) {
@@ -231,3 +223,26 @@ exports.afficheTousComments = async(req,res)=>{
         res.status(500).send('Server Error');
     }
 }
+
+
+// exports.afficheMostPost = async(req,res)=>{    
+//   let postAvecPlusGrandScore = null;
+//   let scorePlusGrand = -Infinity;
+  
+//   // Parcourir tous les posts pour trouver celui avec le score le plus élevé
+//   Post.forEach(post => {
+//     const nbLikes = post.likes.length;
+//     const nbCommentaires = post.comments.length;
+//     const score = nbLikes * 0.6 + 0.4 * nbCommentaires;
+    
+//     if (score > scorePlusGrand) {
+//       postAvecPlusGrandScore = post;
+//       scorePlusGrand = score;
+//     }
+//   });
+  
+//   // Renvoyer le post avec le score le plus élevé
+//   res.json(postAvecPlusGrandScore)
+//   console.log(postAvecPlusGrandScore);
+//   return postAvecPlusGrandScore; 
+// }

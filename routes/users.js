@@ -9,7 +9,10 @@ router.put('/editProfile', userController.editProfile);
 
 router.get('/:id', userController.getById)
 
+//router.get('/nbUsers', userController.nbUsers)
+
 router.post('/forgot-password', userController.forgotPassword);
+
 router.post('/reset-password/:token', userController.resetPassword);
 router.get('/verify/:token', async (req, res) => {
     try {

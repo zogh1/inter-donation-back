@@ -47,5 +47,6 @@ router.get('/afficheListComments/:id', postController.afficheListComments);
 
 router.get('/afficheTousComments', postController.afficheTousComments);
 
+//router.get('/afficheMostPost',postController.afficheMostPost);
 
 module.exports = router;

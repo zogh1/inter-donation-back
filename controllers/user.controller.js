@@ -10,8 +10,8 @@ require('dotenv').config();
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 exports.signup = async (req, res) => {
-  const { lastName, email, password, firstName, imageUrl,role ,faceId} = req.body;
-  console.log(lastName, email, password, firstName, imageUrl,role );
+  const { lastName, email, password, firstName,role ,faceId} = req.body;
+  console.log(lastName, email, password, firstName,role );
   try {
     const user = await User.findOne({ email });
     if (user) {
@@ -30,7 +30,7 @@ exports.signup = async (req, res) => {
       lastName:lastName,
       email:email,
       firstName: firstName,
-      imageUrl:imageUrl,
+      imageUrl:"",
       password:bcrypt.hashSync(password, 8),
       code:verificationToken,
       role:role,
@@ -39,7 +39,7 @@ exports.signup = async (req, res) => {
       
     });
     console.log(userSave);
-   await userSave.save();
+    userSave.save();
    
    
 
@@ -660,3 +660,17 @@ exports.editProfile = async (req, res) => {
   return res.status(200).send(user);
 
 };
+// exports.nbUsers = async(req,res)=>{
+//   var nb = User.countDocuments();
+//   res.json(nb)
+//   console.log(nb);
+// }
+// exports.nbUsers = async(req,res)=>{
+//   User.countDocuments({}, function(err, count) {
+//     try {
+//       res.json(count);
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   });
+// }

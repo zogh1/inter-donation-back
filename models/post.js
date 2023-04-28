@@ -6,19 +6,19 @@ const UserSchema = new Schema({
 	
 	email         : {
 		type     : String,
-		required : false
+		required : true
 	},
 	password      : {
 		type     : String,
-		required : false
+		required : true
 	},
 	firstName      : {
 		type     : String,
-		required : false
+		required : true
 	},
     lastName      : {
 		type     : String,
-		required : false
+		required : true
 	},
 	role          : {
 		type    : String,
@@ -36,24 +36,17 @@ const UserSchema = new Schema({
 		type    : Boolean,
 		default : false
 	},
-    newPass          : {
-		type    : Boolean,
-		default : false
-	},
-    
-    faceId:{
+
+	faceId:{
 		type:String,
 		default : null
 	},
-
-
-	identityVerified: {
-		type: Boolean,
-		default: false
-	  },
 	company: {
 		type: String,
 	  },
+
+		
+	
 },
 { timestamps: true }
 );
