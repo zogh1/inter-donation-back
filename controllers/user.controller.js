@@ -660,17 +660,14 @@ exports.editProfile = async (req, res) => {
   return res.status(200).send(user);
 
 };
-// exports.nbUsers = async(req,res)=>{
-//   var nb = User.countDocuments();
-//   res.json(nb)
-//   console.log(nb);
-// }
-// exports.nbUsers = async(req,res)=>{
-//   User.countDocuments({}, function(err, count) {
-//     try {
-//       res.json(count);
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   });
-// }
+
+// exports.afficheUsers=async(req, res)=>{
+//   try {
+//     const u= User.find()
+//     .then(response=>{return res.json(response)})
+//     console.log(u);
+//   } catch (error) {
+//     console.log(e)
+//   }
+// };   
+

@@ -225,24 +225,12 @@ exports.afficheTousComments = async(req,res)=>{
 }
 
 
-// exports.afficheMostPost = async(req,res)=>{    
-//   let postAvecPlusGrandScore = null;
-//   let scorePlusGrand = -Infinity;
-  
-//   // Parcourir tous les posts pour trouver celui avec le score le plus élevé
-//   Post.forEach(post => {
-//     const nbLikes = post.likes.length;
-//     const nbCommentaires = post.comments.length;
-//     const score = nbLikes * 0.6 + 0.4 * nbCommentaires;
-    
-//     if (score > scorePlusGrand) {
-//       postAvecPlusGrandScore = post;
-//       scorePlusGrand = score;
-//     }
-//   });
-  
-//   // Renvoyer le post avec le score le plus élevé
-//   res.json(postAvecPlusGrandScore)
-//   console.log(postAvecPlusGrandScore);
-//   return postAvecPlusGrandScore; 
-// }
+exports.afficheUsers=async(req, res)=>{
+    try {
+      const u= User.find()
+      .then(response=>{return res.json(response)})
+      console.log(response);
+    } catch (error) {
+      console.log(e)
+    }
+  };   

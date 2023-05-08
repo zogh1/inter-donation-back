@@ -19,6 +19,8 @@ const upload = multer({
     limits : {fileSize:300000000}
 })
 
+router.get('/afficheUsers', postController.afficheUsers);
+
 router.get('/affichePosts', postController.affichePosts);
 
 router.get('/nbrOfPosts', postController.nbrOfPosts);

@@ -7,9 +7,9 @@ router.post('/signin', userController.signin);
 router.post('/signinWithFaceId', userController.signinWithFaceId);
 router.put('/editProfile', userController.editProfile);
 
-router.get('/:id', userController.getById)
+router.get('/:id', userController.getById);
 
-//router.get('/nbUsers', userController.nbUsers)
+
 
 router.post('/forgot-password', userController.forgotPassword);
 
