@@ -22,7 +22,7 @@ showChat.addEventListener("click", () => {
  //const user = prompt("Enter your name");
 
 var peer = new Peer({
-  host: 'interdonback.onrender.com/live/allLives',
+  host: 'interdonback.onrender.com',
   port: 8000,
   path: '/peerjs',
   config: {
