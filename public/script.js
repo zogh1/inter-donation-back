@@ -23,7 +23,7 @@ showChat.addEventListener("click", () => {
 
 var peer = new Peer({
   host: 'https://interdonback.onrender.com',
-  port: process.env.PORT,
+  
   path: '/peerjs',
   config: {
     'iceServers': [
