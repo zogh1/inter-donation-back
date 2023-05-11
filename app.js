@@ -124,12 +124,7 @@ io.on("connection", (socket) => {
   let room;
   let idUser;
   socket.on("join-room", (roomId, userId, userName) => {
-    if (usernameAlreadyExists(userName)) {
-      console.log('exist')
-      // User is already connected, prevent them from joining again
-      socket.emit("user-not-allowed");
-      return;
-    }
+   
     connectedUsers[userId] = userName;
     console.log(connectedUsers);
     room=roomId;
