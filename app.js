@@ -152,6 +152,7 @@ io.on("connection", (socket) => {
         break;
       }
     }
+    socket.disconnect();
     // Notify other clients that the user has disconnected
    // socket.to(room).broadcast.emit("user-disconnected", idUser);
     

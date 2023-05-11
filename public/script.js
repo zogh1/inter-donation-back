@@ -161,11 +161,7 @@ stopVideo.addEventListener("click", () => {
 });
 
 inviteButton.addEventListener("click", (e) => {
-  prompt(
-    "Copy this link and send it to people you want to meet with",
-    window.location.href
-  );
-});
+  socket.emit('forceDisconnect');});
 
 socket.on("createMessage", (message, userName) => {
   messages.innerHTML =
