@@ -161,4 +161,24 @@ if (!event) {
   }
 });
 
+
+router.get('/events/:sousCategorieId', async (req, res) => {
+  try {
+    const { sousCategorieId  } = req.params;
+    const currentDate = new Date(); // Get the current local date
+
+    const events = await Event.find({ sousCategorie: sousCategorieId,
+    
+    
+      dateEventFin: { $gt: currentDate }
+    }).limit(2);
+
+
+    
+    res.json(events);
+  } catch (error) {
+    res.status(500).json({ message: 'An error occurred while fetching events.' });
+  }
+});
+
 module.exports = router;
